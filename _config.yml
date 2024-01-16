@@ -12,7 +12,7 @@
 			Professor </p ></font><p><font face="Arial">
 			Department of Data Science,Management School,Tianjin Normal University<br>
 			<br>
-			Address:Room B520, Building XINGWEN, No.393, Binshui West Road, Xiqing District, Tianjin, China<br>
+			Address: Room B520, Building XINGWEN, No.393, Binshui West Road, Xiqing District, Tianjin, China<br>
                         Post Code: 300380 <br>
 			Phone Number: (+86) 18822339368 <br>
 			Email: <font size="2"><b> spyer2008@126.com</b></font></font>
@@ -28,10 +28,11 @@
 	</tr>
 	<tr>
 		<td width="50">
-		</td>
+		</tr>
 		<td colspan="3" align="left" height="20" valign="top" width="750">
-			
-			I am a Professor ....
+			<h2>Professional Experience</h2>
+			<p>•2019.11---present, Associate Professor, Department of Data Science, Management School, Tianjin Normal University
+                           •2010.7---2019.10, Associate Professor, Institute of Scientific and Technological Information of China (ISTIC)</p>
 			
 			<h3>Research</h3>
 			
