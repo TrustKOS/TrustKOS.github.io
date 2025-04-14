@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!-- HTML5 文档类型声明，确保浏览器以标准模式渲染页面 -->
+<html lang="zh-CN">
+<!-- 设置页面语言为中文 -->
+
+<head>
+    <!-- 页面头部信息 -->
+    <meta charset="UTF-8">
+    <!-- 设置字符编码为 UTF-8，确保页面正确显示中文 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 响应式设计，确保页面在不同设备上正确显示 -->
+    <title>课题组系统展示</title>
+    <!-- 页面标题 -->
+    <style>
+        /* 重置样式，确保页面在不同浏览器中的一致性 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            /* 设置字体，优先使用微软雅黑 */
+            background-color: #f5f5f5;
+            /* 页面背景颜色 */
+            color: #333;
+            /* 文字颜色 */
+            line-height: 1.6;
+            /* 行高设置 */
+        }
+        
+        .container {
+            max-width: 1200px;
+            /* 设置最大宽度，确保在大屏幕上不会过宽 */
+            margin: 0 auto;
+            /* 水平居中 */
+            padding: 0 15px;
+            /* 内边距，确保内容与边缘有适当间距 */
+        }
+        
+        /* 顶部导航样式 */
+        .header {
+            background-color: #fff;
+            /* 导航栏背景颜色 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* 添加阴影，增强层次感 */
+            padding: 15px 0;
+            /* 内边距 */
+            position: sticky;
+            /* 固定定位，滚动时保持在顶部 */
+            top: 0;
+            z-index: 100;
+            /* 确保导航栏在其他内容之上 */
+            transition: transform 0.3s ease;
+            /* 添加过渡效果，使动画更平滑 */
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+            /* 隐藏导航栏时的动画效果 */
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            /* 标题字体大小 */
+            font-weight: normal;
+            /* 字体粗细 */
+            color: #333;
+            /* 文字颜色 */
+        }
+        
+        .nav {
+            display: flex;
+            /* 使用 Flex 布局，使子元素可以灵活排列 */
+            justify-content: space-between;
+            /* 子元素两端对齐 */
+            align-items: center;
+            /* 垂直居中对齐 */
+            margin-top: 10px;
+            /* 顶部外边距 */
+        }
+        
+        .nav-links {
+            display: flex;
+            /* 使用 Flex 布局 */
+            justify-content: flex-end;
+            /* 子元素右对齐 */
+            width: 100%;
+            /* 宽度设置为 100% */
+        }
+        
+        .nav-links a {
+            margin-left: 20px;
+            /* 左边距，使链接之间有间隔 */
+            text-decoration: none;
+            /* 去掉链接下划线 */
+            color: #666;
+            /* 链接文字颜色 */
+            font-size: 14px;
+            /* 字体大小 */
+        }
+        
+        .nav-links a:hover {
+            color: #1e88e5;
+            /* 鼠标悬停时的文字颜色 */
+        }
+        
+        /* 系统展示部分样式 */
+        .system-section {
+            margin-bottom: 40px;
+            /* 底部外边距 */
+        }
+        
+        .system-title {
+            text-align: center;
+            /* 文字居中 */
+            font-size: 24px;
+            /* 字体大小 */
+            margin-top: 50px;
+            /* 增加顶部间距 */
+            margin-bottom: 30px;
+            /* 底部外边距 */
+            color: #333;
+            /* 文字颜色 */
+        }
+        
+        .system-items {
+            display: flex;
+            /* 使用 Flex 布局 */
+            justify-content: center;
+            /* 子元素居中对齐 */
+            flex-wrap: wrap;
+            /* 允许换行 */
+            gap: 30px;
+            /* 系统之间的间距 */
+        }
+        
+        .system-item {
+            width: 31%;
+            /* 每个模块的宽度 */
+            max-width: 350px;
+            /* 最大宽度，防止在大屏幕上过于分散 */
+            margin-bottom: 30px;
+            /* 底部外边距 */
+            background-color: #fff;
+            /* 背景颜色 */
+            border-radius: 5px;
+            /* 圆角边框 */
+            overflow: hidden;
+            /* 隐藏溢出内容 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* 添加阴影 */
+            transition: transform 0.3s ease;
+            /* 添加过渡效果 */
+        }
+        
+        .system-item:hover {
+            transform: translateY(-5px);
+            /* 鼠标悬停时的动画效果 */
+        }
+        
+        .system-image {
+            height: 200px;
+            /* 图片高度 */
+            background-color: #eee;
+            /* 背景颜色 */
+            display: flex;
+            /* 使用 Flex 布局 */
+            align-items: center;
+            /* 垂直居中 */
+            justify-content: center;
+            /* 水平居中 */
+        }
+        
+        .system-image img {
+            max-width: 100%;
+            /* 图片最大宽度 */
+            max-height: 100%;
+            /* 图片最大高度 */
+            object-fit: cover;
+            /* 图片裁剪方式 */
+        }
+        
+        .system-content {
+            padding: 20px;
+            /* 内边距 */
+        }
+        
+        .system-content h3 {
+            font-size: 18px;
+            /* 字体大小 */
+            margin-bottom: 10px;
+            /* 底部外边距 */
+            color: #212121;
+            /* 文字颜色 */
+        }
+        
+        .system-content p {
+            color: #757575;
+            /* 文字颜色 */
+            margin-bottom: 15px;
+            /* 底部外边距 */
+            font-size: 14px;
+            /* 字体大小 */
+            line-height: 1.6;
+            /* 行高 */
+        }
+        
+        .system-buttons {
+            display: flex;
+            /* 使用 Flex 布局 */
+            justify-content: center;
+            /* 按钮水平居中 */
+            align-items: flex-end;
+            /* 按钮垂直靠下 */
+            gap: 10px;
+            /* 按钮之间的间距 */
+            margin-top: 15px;
+            /* 顶部外边距 */
+            height: 100%;
+            /* 确保按钮容器占据父容器的全部高度 */
+        }
+        
+        .btn {
+            display: inline-block;
+            /* 行内块元素 */
+            padding: 8px 16px;
+            /* 内边距 */
+            background-color: #000000;
+            /* 背景颜色 */
+            color: white;
+            /* 文字颜色 */
+            text-decoration: none;
+            /* 去掉下划线 */
+            border-radius: 4px;
+            /* 圆角边框 */
+            font-size: 14px;
+            /* 字体大小 */
+            transition: background-color 0.3s;
+            /* 添加过渡效果 */
+            white-space: nowrap; /* 防止文字换行 */
+        }
+        
+        .btn:hover {
+            background-color: #29deab;
+            /* 鼠标悬停时的背景颜色 */
+        }
+        
+        .btn-download {
+            background-color: #1e88e5;
+            /* 下载按钮的背景颜色 */
+        }
+        
+        .btn-download:hover {
+            background-color: #0d47a1;
+            /* 鼠标悬停时的背景颜色 */
+        }
+        
+        /* 视频按钮样式 */
+        .btn-video {
+            background-color: #4CAF50;
+            /* 视频按钮的背景颜色 */
+            cursor: pointer;
+            /* 鼠标悬停时显示手型 */
+            white-space: nowrap; /* 防止文字换行 */
+        }
+        
+        .btn-video:hover {
+            background-color: #45a049;
+            /* 鼠标悬停时的背景颜色 */
+        }
+        
+        /* 底部样式 */
+        .footer {
+            background-color: #212121;
+            /* 背景颜色 */
+            color: #fff;
+            /* 文字颜色 */
+            padding: 40px 0;
+            /* 内边距 */
+        }
+        
+        .footer-content {
+            display: flex;
+            /* 使用 Flex 布局 */
+            justify-content: space-between;
+            /* 子元素两端对齐 */
+        }
+        
+        .footer-left, .footer-right {
+            flex: 1;
+            /* 等分宽度 */
+        }
+        
+        .footer-left h3, .footer-right h3 {
+            font-size: 18px;
+            /* 字体大小 */
+            margin-bottom: 15px;
+            /* 底部外边距 */
+            color: #fff;
+            /* 文字颜色 */
+        }
+        
+        .footer-left p, .footer-right p {
+            font-size: 14px;
+            /* 字体大小 */
+            color: #aaa;
+            /* 文字颜色 */
+            margin-bottom: 10px;
+            /* 底部外边距 */
+        }
+        
+        /* 响应式设计，确保在不同屏幕尺寸下显示良好 */
+        @media (max-width: 768px) {
+            .system-items {
+                flex-direction: column;
+                /* 在小屏幕上垂直排列 */
+                align-items: center;
+                /* 居中对齐 */
+            }
+            
+            .system-item {
+                width: 100%;
+                /* 宽度设置为 100% */
+                max-width: 100%;
+                /* 最大宽度设置为 100% */
+                margin-bottom: 20px;
+                /* 底部外边距 */
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                /* 在小屏幕上垂直排列 */
+            }
+            
+            .footer-right {
+                margin-top: 30px;
+                /* 顶部外边距 */
+            }
+            
+            .header h1 {
+                font-size: 24px;
+                /* 在小屏幕上减小字体大小 */
+            }
+            
+            .nav-links {
+                justify-content: center;
+                /* 在小屏幕上居中对齐 */
+            }
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            /* 默认隐藏 */
+            position: fixed;
+            /* 固定定位 */
+            z-index: 1000;
+            /* 确保模态框在其他内容之上 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* 半透明黑色背景 */
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            /* 模态框背景颜色 */
+            margin: 5% auto;
+            /* 水平居中 */
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            /* 最大宽度 */
+            border-radius: 5px;
+            /* 圆角边框 */
+        }
+        
+        .close {
+            color: #888888;
+            /* 关闭按钮颜色 */
+            float: right;
+            /* 右对齐 */
+            font-size: 28px;
+            /* 字体大小 */
+            font-weight: bold;
+            /* 加粗 */
+            cursor: pointer;
+            /* 鼠标悬停时显示手型 */
+        }
+        
+        .close:hover {
+            color: #000000;
+            /* 鼠标悬停时的颜色 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="container">
+            <h1>TRUSTKOS</h1>
+            <!-- 页面标题 -->
+            <nav class="nav">
+                <!-- 导航栏 -->
+                <div class="nav-links">
+                    <!-- 导航链接 -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 系统展示 -->
+        <section class="system-section">
+            <h2 class="system-title">“知天下”知识发现系统</h2>
+            <!-- 系统展示标题 -->
+            
+            <div class="system-items">
+                <!-- 系统列表 -->
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8502/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>术语服务系统</h3>
+                        <!-- 系统名称 -->
+                        <p>系统文字介绍</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8502/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/国自科系统申请人和参与人添加流程图解.pdf" class="btn btn-download" target="_blank">系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video1')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8503/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>简报服务系统</h3>
+                        <!-- 系统名称 -->
+                        <p>系统文字介绍</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8503/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/system2_manual.pdf" class="btn btn-download" download>系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video2')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8507/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>数值信息提取系统</h3>
+                        <!-- 系统名称 -->
+                        <p>系统文字介绍</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8507/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/system3_manual.pdf" class="btn btn-download" download>系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video3')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </main>
+    
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 系统展示 -->
+        <section class="system-section">
+            <h2 class="system-title">“正道”人才画像系统</h2>
+            <!-- 系统展示标题 -->
+            
+            <div class="system-items">
+                <!-- 系统列表 -->
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8501/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>科研人员开源学术简历聚合系统</h3>
+                        <!-- 系统名称 -->
+                        <p>系统文字介绍</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8501/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/国自科系统申请人和参与人添加流程图解.pdf" class="btn btn-download" target="_blank">系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video4')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8505/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>科研诚信风险预警平台</h3>
+                        <!-- 系统名称 -->
+                        <p>系统说明文档</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8505/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/system2_manual.pdf" class="btn btn-download" download>系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video5')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </main>
+
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 系统展示 -->
+        <section class="system-section">
+            <h2 class="system-title">“古道”罕见病术语知识发现系统</h2>
+            <!-- 系统展示标题 -->
+            
+            <div class="system-items">
+                <!-- 系统列表 -->
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="http://10.20.32.102:8506/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>古籍罕见病知识服务系统</h3>
+                        <!-- 系统名称 -->
+                        <p>系统文字介绍</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="http://10.20.32.102:8506/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/国自科系统申请人和参与人添加流程图解.pdf" class="btn btn-download" target="_blank">系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video6')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="system-item">
+                    <!-- 单个系统项 -->
+                    <div class="system-image">
+                        <!-- 系统图片跳转链接 -->
+                        <a href="https://glxy.tjnu.edu.cn/" target="_blank">
+                            <!-- 系统图片 -->
+                            <img src="E:\Desktop\文档\课题组相关\课题组系统\image\001.jpg" alt="系统1图片">
+                        </a>
+                    </div>
+                    <div class="system-content">
+                        <!-- 系统内容 -->
+                        <h3>罕见病知识问答</h3>
+                        <!-- 系统名称 -->
+                        <p>系统说明文档</p>
+                        <!-- 系统描述 -->
+                        <div class="system-buttons">
+                            <!-- 按钮容器 -->
+                            <a href="https://glxy.tjnu.edu.cn/" class="btn" target="_blank">系统详情</a>
+                            <!-- 链接到系统详情的按钮 -->
+                            <a href="pdfs/system2_manual.pdf" class="btn btn-download" download>系统说明文档</a>
+                            <!-- 下载PDF按钮 -->
+                            
+                            <!-- 新增视频演示按钮 -->
+                            <button class="btn btn-video" onclick="showVideo('video7')">视频演示</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </main>
+    
+    <!-- 底部 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>关于我们</h3>
+                    <!-- 底部左侧标题 -->
+                    <p>地址：天津市西青区天津师范大学管理学院</p>
+                    <!-- 地址信息 -->
+                    <p>邮箱：songpy@tjnu.edu.cn</p>
+                    <!-- 邮箱信息 -->
+                </div>
+                <div class="footer-right">
+                    <h3></h3>
+                    <!-- 底部右侧标题 -->
+                    <p></p>
+                    <!-- 详细描述 -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 视频模态框 -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <video id="videoPlayer" controls width="800" height="450">
+                <source id="videoSource" src="" type="video/mp4">
+                您的浏览器不支持 HTML5 视频播放。
+            </video>
+        </div>
+    </div>
+
+    <script>
+        // 滚动时隐藏导航栏的脚本
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            // 监听滚动事件
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // 如果向下滚动超过 100 像素，则隐藏导航栏
+                header.classList.add('hidden');
+            } else {
+                // 否则显示导航栏
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // 显示视频模态框
+        function showVideo(videoId) {
+            const modal = document.getElementById('videoModal');
+            const videoSource = document.getElementById('videoSource');
+            
+            // 根据视频ID设置视频源
+            switch(videoId) {
+                case 'video1':
+                    videoSource.src = 'E:/Desktop/文档/课题组相关/课题组系统/videos/123.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video2':
+                    videoSource.src = 'path/to/video2.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video3':
+                    videoSource.src = 'path/to/video3.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video4':
+                    videoSource.src = 'path/to/video4.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video5':
+                    videoSource.src = 'path/to/video5.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video6':
+                    videoSource.src = 'path/to/video6.mp4'; // 替换为实际视频路径
+                    break;
+                case 'video7':
+                    videoSource.src = 'path/to/video7.mp4'; // 替换为实际视频路径
+                    break;
+            }
+            
+            // 显示模态框
+            modal.style.display = 'block';
+            
+            // 自动播放视频
+            document.getElementById('videoPlayer').load();
+            document.getElementById('videoPlayer').play();
+        }
+        
+        // 关闭视频模态框
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            modal.style.display = 'none';
+            
+            // 停止视频播放
+            document.getElementById('videoPlayer').pause();
+        }
+        
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
