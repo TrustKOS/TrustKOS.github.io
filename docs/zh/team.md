@@ -6,7 +6,7 @@ layout: page
 
 <script setup>
 const teachInfo = {
-    name: "宋培彦",
+    name: "宋培彦 111",
     title: "教授 · 硕士生导师",
     educationTitle: "教育背景",
     education: [
