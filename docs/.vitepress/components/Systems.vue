@@ -40,6 +40,7 @@ const onOpenUrl = (url) => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 30px 100px;
   h1 {
     font-size: 30px;
@@ -49,6 +50,41 @@ const onOpenUrl = (url) => {
   }
   .ant-card {
     margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .systems {
+    padding: 20px 15px;
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+  }
+
+  :deep(.ant-flex) {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  :deep(.ant-card) {
+    width: 100% !important;
+    max-width: 350px;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .systems {
+    padding: 15px 10px;
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  :deep(.ant-card) {
+    width: 100% !important;
+    max-width: 300px;
   }
 }
 </style>
