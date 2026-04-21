@@ -4,7 +4,6 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   lang: 'en-US',
   ignoreDeadLinks: true,
-  base: '/officialWebsite/',
   rewrites: {
     'zh/:path*': ':path*'
   },

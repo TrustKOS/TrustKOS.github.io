@@ -58,7 +58,7 @@ import { useIsMobile } from '../composables/useIsMobile.ts'
 const isMobile = useIsMobile()
 
 // 这里替换为你实际的图片路径
-const profileImg = '/officialWebsite/images/001.png';
+const profileImg = '/images/001.png';
 const props = defineProps({
   info: {},
   title1: "",

@@ -21,7 +21,7 @@ const systems = reactive([
     bgColor: "#FFFDD2",
     list: [
       {
-        image: "/officialWebsite/images/img.png",
+        image: "/images/img.png",
         title: "Terminology Service System",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8502/",
@@ -29,7 +29,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_1.png",
+        image: "/images/img_1.png",
         title: "AI4S Causal Knowledge Discovery System",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8610/",
@@ -37,7 +37,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_2.png",
+        image: "/images/img_2.png",
         title: "Briefing Service System",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8503/",
@@ -51,7 +51,7 @@ const systems = reactive([
     bgColor: "#D8E5FF",
     list: [
       {
-        image: "/officialWebsite/images/img_3.png",
+        image: "/images/img_3.png",
         title: "Open Source Academic Resume Aggregation System for Researchers",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8501/",
@@ -59,7 +59,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_4.png",
+        image: "/images/img_4.png",
         title: "Research Integrity Risk Early Warning Platform",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8505/",
@@ -73,7 +73,7 @@ const systems = reactive([
     bgColor: "#FFE2D9",
     list: [
       {
-        image: "/officialWebsite/images/img_5.png",
+        image: "/images/img_5.png",
         title: "Ancient Rare Disease Knowledge Service System",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8506/",
@@ -81,7 +81,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_6.png",
+        image: "/images/img_6.png",
         title: "Rare Disease Knowledge Q&A",
         description: "Click the buttons below to learn more",
         url: "http://10.20.32.102:8611/",
@@ -89,7 +89,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_7.png",
+        image: "/images/img_7.png",
         title: "Wenbing Knowledge Q&A",
         description: "Click the buttons below to learn more",
         url: "http://192.168.12.102:8615",
@@ -103,7 +103,7 @@ const systems = reactive([
     bgColor: "#D6FADB",
     list: [
       {
-        image: "/officialWebsite/images/img_8.png",
+        image: "/images/img_8.png",
         title: "Book Adaptability Evaluation",
         description: "Click the buttons below to learn more",
         url: "http://192.168.12.102:8613",
@@ -111,7 +111,7 @@ const systems = reactive([
         video: "",
       },
       {
-        image: "/officialWebsite/images/img_9.png",
+        image: "/images/img_9.png",
         title: "K12 Reading Ability Evaluation",
         description: "Click the buttons below to learn more",
         url: "http://192.168.12.102:8614",
