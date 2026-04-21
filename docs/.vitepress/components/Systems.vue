@@ -1,24 +1,26 @@
 <template>
   <div class="systems">
     <template v-for="(item, index) in systems" :key="index">
-      <h1>{{item.title}}</h1>
-      <a-flex gap="middle" justify="space-evenly">
-        <a-card v-for="(ite, i) in item.list" :key="i" hoverable style="width: 350px">
-          <template #cover>
-            <img
-                alt="example"
-                :src="ite.image"
-            />
-          </template>
-          <template #actions>
-            <template v-for="(action, inx) in actions">
-              <a-button type="primary" :danger="inx === 0" @click="onOpenUrl(ite.url)">{{action.name}}</a-button>
+      <a-card :body-style="{backgroundColor: item.bgColor}">
+        <h1>{{item.title}}</h1>
+        <a-flex gap="middle" justify="space-evenly">
+          <a-card v-for="(ite, i) in item.list" :key="i" hoverable style="width: 350px">
+            <template #cover>
+              <img
+                  alt="example"
+                  :src="ite.image"
+              />
             </template>
-          </template>
-          <a-card-meta :title="ite.title" :description="ite.description">
-          </a-card-meta>
-        </a-card>
-      </a-flex>
+            <template #actions>
+              <template v-for="(action, inx) in actions">
+                <a-button type="primary" :danger="inx === 0" @click="onOpenUrl(ite.url)">{{action.name}}</a-button>
+              </template>
+            </template>
+            <a-card-meta :title="ite.title" :description="ite.description">
+            </a-card-meta>
+          </a-card>
+        </a-flex>
+      </a-card>
     </template>
   </div>
 </template>
@@ -42,7 +44,11 @@ const onOpenUrl = (url) => {
   h1 {
     font-size: 30px;
     font-weight: bold;
-    margin: 60px auto 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .ant-card {
+    margin-bottom: 40px;
   }
 }
 </style>

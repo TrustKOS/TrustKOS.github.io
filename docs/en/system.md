@@ -18,6 +18,7 @@ const actions = reactive([
 const systems = reactive([
   {
     title: "Zhitianxia Knowledge Discovery System",
+    bgColor: "#FFFDD2",
     list: [
       {
         image: "/officialWebsite/images/img.png",
@@ -47,6 +48,7 @@ const systems = reactive([
   },
   {
     title: "Zhengdao Talent Profiling System",
+    bgColor: "#D8E5FF",
     list: [
       {
         image: "/officialWebsite/images/img_3.png",
@@ -68,6 +70,7 @@ const systems = reactive([
   },
   {
     title: "Gudao Rare Disease Terminology Knowledge Discovery System",
+    bgColor: "#FFE2D9",
     list: [
       {
         image: "/officialWebsite/images/img_5.png",
@@ -97,6 +100,7 @@ const systems = reactive([
   },
   {
     title: "Jiudao Intelligent Reading Evaluation and Analysis System",
+    bgColor: "#D6FADB",
     list: [
       {
         image: "/officialWebsite/images/img_8.png",
