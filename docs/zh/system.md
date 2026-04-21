@@ -18,7 +18,7 @@ const actions = reactive([
 const systems = reactive([
   {
     title: "“知天下”知识发现系统",
-    bgColor: "#FFFDD2",
+    bgColor: "#babab4",
     list: [
 
       {
@@ -49,7 +49,7 @@ const systems = reactive([
   },
   {
     title: "“正道”人才画像系统",
-    bgColor: "#D8E5FF",
+    bgColor: "#babab4",
     list: [
 
       {
@@ -72,7 +72,7 @@ const systems = reactive([
   },
   {
     title: "“古道”罕见病术语知识发现系统",
-    bgColor: "#FFE2D9",
+    bgColor: "#babab4",
     list: [
       {
         image: "/officialWebsite/images/img_5.png",
@@ -102,7 +102,7 @@ const systems = reactive([
   },
   {
     title: "“就道”阅读智能评价与分析系统",
-    bgColor: "#D6FADB",
+    bgColor: "#babab4",
     list: [
       {
         image: "/officialWebsite/images/img_8.png",
