@@ -10,18 +10,23 @@
           <h1 class="name">{{info?.profile.name}}</h1>
 
           <div class="title-row">
+            <span class="vertical">{{info?.profile.university}}</span>
+            <a-divider v-if="!isMobile" type="vertical" />
             <span class="department">{{info?.profile.department}}</span>
-            <a-divider type="vertical" />
+            <a-divider v-if="!isMobile" type="vertical" />
             <span class="office">{{info?.profile.title}}</span>
           </div>
 
-          <div class="university">{{info?.profile.university}}</div>
+          <div class="title-row">
+            研究方向：知识组织与自然语言处理、人才画像与科技评价、科技大数据与AI应用
+          </div>
 
           <div class="contact-info">
             <div class="contact-item">
               <mail-outlined class="icon-blue" />
               <a :href="'mailto:songpy@tjnu.edu.cn'" class="link-text">{{info?.profile.email}}</a>
             </div>
+
             <div class="contact-item">
               <environment-outlined class="icon-blue" />
               <span class="address">{{info?.profile.address}}</span>
@@ -49,6 +54,8 @@
 
 <script setup>
 import { MailOutlined, EnvironmentOutlined } from '@ant-design/icons-vue';
+import { useIsMobile } from '../composables/useIsMobile.ts'
+const isMobile = useIsMobile()
 
 // 这里替换为你实际的图片路径
 const profileImg = '/officialWebsite/images/001.png';
@@ -113,7 +120,6 @@ const props = defineProps({
 .contact-info {
   display: flex;
   gap: 32px;
-  margin-top: 20px;
 }
 
 .contact-item {
@@ -164,7 +170,6 @@ const props = defineProps({
   .title-row {
     font-size: 16px;
     flex-direction: column;
-    gap: 8px;
   }
   
   .university {

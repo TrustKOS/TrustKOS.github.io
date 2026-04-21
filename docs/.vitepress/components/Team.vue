@@ -69,16 +69,14 @@ const partners = reactive([
             <h3>{{teachInfo?.name}}</h3>
             <p class="title">{{teachInfo?.title}}</p>
           </div>
-          <div class="info-block">
-            <h4>📚 {{teachInfo.educationTitle}}</h4>
-            <ul>
-              <li v-for="item in teachInfo?.education">{{item}}</li>
-            </ul>
-          </div>
-          <div class="info-block">
-            <h4>💼 {{teachInfo.experienceTitle}}</h4>
-            <ul>
-              <li v-for="item in teachInfo?.experience">{{item}}</li>
+          <div class="info-block" v-for="item in teachInfo.main">
+            <h4>{{item.title}}</h4>
+            <div v-if="item.type === 'custom'">
+              {{item.content}}
+              <div style="text-align: end">{{item.email}}</div>
+            </div>
+            <ul v-else>
+              <li v-for="ite in item.content">{{ite}}</li>
             </ul>
           </div>
         </div>
