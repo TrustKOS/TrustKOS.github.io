@@ -35,7 +35,7 @@ export default defineConfig({
           label: '当前页大纲'
         },
         editLink: {
-          pattern: 'https://github.com/MrGao-hy/officialWebsite/edit/main/docs/:path', // 改成自己的仓库
+          pattern: 'https://github.com/TrustKOS/TrustKOS.github.io/edit/main/docs/:path', // 改成自己的仓库
           text: '在GitHub编辑本页'
         },
         footer: {
