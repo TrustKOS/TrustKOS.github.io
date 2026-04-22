@@ -71,7 +71,7 @@ const partners = reactive([
           </div>
           <div class="info-block" v-for="item in teachInfo.main">
             <h4>{{item.title}}</h4>
-            <div v-if="item.type === 'custom'">
+            <div style="fontSize: 14px" v-if="item.type === 'custom'">
               {{item.content}}
               <div style="text-align: end">{{item.email}}</div>
             </div>

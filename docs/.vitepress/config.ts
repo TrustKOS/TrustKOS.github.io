@@ -18,8 +18,8 @@ export default defineConfig({
         nav: [
           { text: '团队成员', link: '/team' },
           { text: '研究项目', link: '/project' },
-          { text: '获奖情况', link: '/awards' },
           { text: '研究成果', link: '/achievement' },
+          { text: '获奖情况', link: '/awards' },
           { text: '教学工作', link: '/teaching' },
           { text: '系统', link: '/system' },
         ],
@@ -53,8 +53,8 @@ export default defineConfig({
         nav: [
           { text: 'TEAM', link: '/en/team' },
           { text: 'PROJECTS', link: '/en/project' },
-          { text: 'AWARDS', link: '/en/awards' },
           { text: 'ACHIEVEMENTS', link: '/en/achievement' },
+          { text: 'AWARDS', link: '/en/awards' },
           { text: 'TEACHING', link: '/en/teaching' },
           { text: 'SYSTEMS', link: '/en/system' },
         ],
