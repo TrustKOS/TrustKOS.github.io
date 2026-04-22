@@ -1,0 +1,234 @@
+<template>
+  <a-space direction="vertical" size="large" style="width: 100%">
+    <a-card :bordered="false" class="profile-card">
+      <div class="card-container">
+        <div class="avatar-wrapper">
+          <a-avatar :size="160" :src="profileImg" class="profile-avatar" />
+        </div>
+
+        <div class="info-content">
+          <h1 class="name">{{info?.profile.name}}</h1>
+
+          <div class="title-row">
+            <span class="vertical">{{info?.profile.university}}</span>
+            <a-divider v-if="!isMobile" type="vertical" />
+            <span class="department">{{info?.profile.department}}</span>
+            <a-divider v-if="!isMobile" type="vertical" />
+            <span class="office">{{info?.profile.title}}</span>
+          </div>
+
+          <div class="title-row">
+            研究方向：知识组织与自然语言处理、人才画像与科技评价、科技大数据与AI应用
+          </div>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <mail-outlined class="icon-blue" />
+              <a :href="'mailto:songpy@tjnu.edu.cn'" class="link-text">{{info?.profile.email}}</a>
+            </div>
+
+            <div class="contact-item">
+              <environment-outlined class="icon-blue" />
+              <span class="address">{{info?.profile.address}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a-card>
+
+    <a-card :headStyle="{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: '#fff'}" :title="title1">
+      {{info?.dynamic}}
+    </a-card>
+
+    <a-card :headStyle="{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: '#fff'}" :title="title2" >
+      <a-flex wrap="wrap" justify="space-around" gap="middle">
+        <template v-for="(item, i) in info?.researchDirections" :key="i">
+          <a-card hoverable style="width: 48%" :title="item.title">
+            {{item.content}}
+          </a-card>
+        </template>
+      </a-flex>
+    </a-card>
+  </a-space>
+</template>
+
+<script setup>
+import { MailOutlined, EnvironmentOutlined } from '@ant-design/icons-vue';
+import { useIsMobile } from '../composables/useIsMobile.ts'
+const isMobile = useIsMobile()
+
+// 这里替换为你实际的图片路径
+const profileImg = '/images/001.png';
+const props = defineProps({
+  info: {},
+  title1: "",
+  title2: ""
+})
+</script>
+
+<style scoped>
+.profile-card {
+  width: 100%;
+  max-width: 100%;
+  background: transparent; /* 根据背景需要调整 */
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* 头像外圈阴影效果 */
+.avatar-wrapper {
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  //background: #fff;
+}
+
+.profile-avatar {
+  border: 1px solid var(--vp-c-border);
+}
+
+.info-content {
+  flex-grow: 1;
+}
+
+.name {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.title-row {
+  font-size: 18px;
+  color: var(--vp-c-text-2);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.university {
+  font-size: 18px;
+  color: var(--vp-c-text-3);
+  margin-bottom: 24px;
+}
+
+.contact-info {
+  display: flex;
+  gap: 32px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--vp-c-text-3);
+}
+
+.icon-blue {
+  color: #1890ff;
+  font-size: 20px;
+}
+
+.link-text {
+  color: var(--vp-c-text-3);
+  text-decoration: none;
+}
+
+.link-text:hover {
+  color: #1890ff;
+}
+
+.address {
+  white-space: nowrap;
+}
+
+/* 适配移动端 */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .profile-avatar {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .name {
+    font-size: 28px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  
+  .title-row {
+    font-size: 16px;
+    flex-direction: column;
+  }
+  
+  .university {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .contact-item {
+    font-size: 14px;
+  }
+  
+  .icon-blue {
+    font-size: 16px;
+  }
+  
+  :deep(.ant-card) {
+    margin-bottom: 20px !important;
+  }
+  
+  :deep(.ant-flex > .ant-card) {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  
+  .address {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-avatar {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .name {
+    font-size: 24px;
+  }
+  
+  .title-row {
+    font-size: 14px;
+  }
+  
+  .university {
+    font-size: 14px;
+  }
+  
+  .contact-item {
+    font-size: 13px;
+  }
+}
+
+:deep(.ant-card-head-title) {
+  white-space: wrap !important;
+}
+</style>
