@@ -19,8 +19,8 @@ const achievements = [
     content: '主持2025年天津市首批普通高校新形态教材建设项目“数据库原理及应用”'
   },
   {
-    type: 'teaching',
-    typeText: '纵向项目',
+    type: 'research',
+    typeText: '横向项目',
     authors: '',
     content: '主持2024年中国科学技术信息研究所情报工程实验室开放基金项目“面向大语言模型检索增强的科技文献深度挖掘研究”'
   },
@@ -55,8 +55,8 @@ const achievements = [
     content: '主持2021年度国家科技评估中心评估研究专项“基于专家库静态信息的人才创新能力评价模型研究”'
   },
   {
-    type: 'teaching',
-    typeText: '纵向项目',
+    type: 'research',
+    typeText: '横向项目',
     authors: '',
     content: '主持2020年全国科技名词审定委员会项目“国际组织术语库集成方法研究”'
   },
