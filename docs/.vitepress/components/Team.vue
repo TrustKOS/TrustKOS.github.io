@@ -84,36 +84,35 @@ const partners = reactive([
     </section>
 
     <section class="members-section">
-      <!-- 在读学生 上 -->
-      <div class="members-column">
-        <div class="section-header">
-          <h2>👥 {{title2}}</h2>
-          <span class="member-count">{{ coreMembers.length }} 人</span>
-        </div>
-        <div class="members-grid">
-          <div v-for="(member, index) in coreMembers" :key="index" class="member-card">
-            <h4 class="member-name">{{ member.name }}</h4>
-            <p class="member-desc">{{ member.desc }}</p>
+      <div class="members-wrapper">
+        <div class="members-column">
+          <div class="section-header">
+            <h2>👥 {{title2}}</h2>
+            <span class="member-count">{{ coreMembers.length }} 人</span>
+          </div>
+          <div class="members-grid">
+            <div v-for="(member, index) in coreMembers" :key="index" class="member-card">
+              <h4 class="member-name">{{ member.name }}</h4>
+              <p class="member-desc">{{ member.desc }}</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 已毕业学生 下 -->
-      <div class="members-column partners" style="margin-top: 28px;">
-        <div class="section-header">
-          <h2>🌟 {{title3}}</h2>
-          <span class="member-count">{{ partners.length }} 人</span>
-        </div>
-        <div class="members-grid">
-          <div v-for="(member, index) in partners" :key="index" class="member-card">
-            <h4 class="member-name">{{ member.name }}</h4>
-            <p class="member-desc">{{ member.desc }}</p>
+        <div class="members-column partners">
+          <div class="section-header">
+            <h2>🌟 {{title3}}</h2>
+            <span class="member-count">{{ partners.length }} 人</span>
+          </div>
+          <div class="members-grid">
+            <div v-for="(member, index) in partners" :key="index" class="member-card">
+              <h4 class="member-name">{{ member.name }}</h4>
+              <p class="member-desc">{{ member.desc }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 </template>
 
 <style scoped>
@@ -203,13 +202,12 @@ const partners = reactive([
   min-width: 0;
 }
 
-/* 统一：电脑端一行4个 */
 .members-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-  
+
 .member-card {
   padding: 8px 12px;
   border-left: 3px solid #667eea;
@@ -244,17 +242,22 @@ const partners = reactive([
   background: #f0f0f0;
 }
 
-
-/* 平板：一行2个 */
 @media (max-width: 768px) {
   .team-container {
     padding: 12px;
   }
-
-  .members-grid {
-    grid-template-columns: repeat(2, 1fr);
+  
+  .members-wrapper {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
   .teacher-card {
     padding: 14px;
   }
@@ -292,11 +295,9 @@ const partners = reactive([
   }
 }
 
-
-/* 手机：一行1个 */
 @media (max-width: 480px) {
   .members-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
   
   .teacher-info h3 {
