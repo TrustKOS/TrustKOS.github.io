@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
 interface ListType {
   name: string
@@ -18,6 +18,9 @@ interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {})
+
+// 控制已毕业学生折叠状态
+const showPartners = ref(false)
 
 const coreMembers = reactive([
   { name: '鲁婷', desc: '2025级 研究生' },
@@ -97,13 +100,19 @@ const partners = reactive([
       </div>
     </section>
 
-    <!-- 已毕业学生（一行2个） -->
+    <!-- 已毕业学生（一行2个 + 折叠功能） -->
     <section class="members-section partners-section">
       <div class="section-header">
         <h2>🌟 {{title3}}</h2>
         <span class="member-count">{{ partners.length }} 人</span>
+        <!-- 折叠/展开按钮 -->
+        <button @click="showPartners = !showPartners" class="toggle-btn">
+          {{ showPartners ? '收起' : '展开' }}
+        </button>
       </div>
-      <div class="partners-grid">
+      
+      <!-- 折叠容器 -->
+      <div v-show="showPartners" class="partners-grid">
         <div v-for="(member, index) in partners" :key="index" class="member-card partners">
           <h4 class="member-name">{{ member.name }}</h4>
           <p class="member-desc">{{ member.desc }}</p>
@@ -141,6 +150,22 @@ const partners = reactive([
   border-radius: 20px;
   font-size: 0.75rem;
   color: #fff;
+}
+
+/* 折叠按钮样式 */
+.toggle-btn {
+  margin-left: auto;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 12px;
+  background: #764ba2;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.toggle-btn:hover {
+  background: #667eea;
 }
 
 .teacher-card {
@@ -200,8 +225,9 @@ const partners = reactive([
 /* 已毕业学生：一行2个 */
 .partners-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+  margin-top: 8px;
 }
 
 .member-card {
