@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, reactive} from 'vue'
+import { computed, reactive } from 'vue'
 
 interface ListType {
   name: string
@@ -83,32 +83,30 @@ const partners = reactive([
       </div>
     </section>
 
+    <!-- 在读学生（一行4个） -->
     <section class="members-section">
-      <div class="members-wrapper">
-        <div class="members-column">
-          <div class="section-header">
-            <h2>👥 {{title2}}</h2>
-            <span class="member-count">{{ coreMembers.length }} 人</span>
-          </div>
-          <div class="members-grid">
-            <div v-for="(member, index) in coreMembers" :key="index" class="member-card">
-              <h4 class="member-name">{{ member.name }}</h4>
-              <p class="member-desc">{{ member.desc }}</p>
-            </div>
-          </div>
+      <div class="section-header">
+        <h2>👥 {{title2}}</h2>
+        <span class="member-count">{{ coreMembers.length }} 人</span>
+      </div>
+      <div class="core-grid">
+        <div v-for="(member, index) in coreMembers" :key="index" class="member-card core">
+          <h4 class="member-name">{{ member.name }}</h4>
+          <p class="member-desc">{{ member.desc }}</p>
         </div>
+      </div>
+    </section>
 
-        <div class="members-column partners">
-          <div class="section-header">
-            <h2>🌟 {{title3}}</h2>
-            <span class="member-count">{{ partners.length }} 人</span>
-          </div>
-          <div class="members-grid">
-            <div v-for="(member, index) in partners" :key="index" class="member-card">
-              <h4 class="member-name">{{ member.name }}</h4>
-              <p class="member-desc">{{ member.desc }}</p>
-            </div>
-          </div>
+    <!-- 已毕业学生（一行2个） -->
+    <section class="members-section partners-section">
+      <div class="section-header">
+        <h2>🌟 {{title3}}</h2>
+        <span class="member-count">{{ partners.length }} 人</span>
+      </div>
+      <div class="partners-grid">
+        <div v-for="(member, index) in partners" :key="index" class="member-card partners">
+          <h4 class="member-name">{{ member.name }}</h4>
+          <p class="member-desc">{{ member.desc }}</p>
         </div>
       </div>
     </section>
@@ -189,27 +187,25 @@ const partners = reactive([
 }
 
 .members-section {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.members-wrapper {
+/* 在读学生：一行4个 */
+.core-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-.members-column {
-  min-width: 0;
-}
-
-.members-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* 已毕业学生：一行2个 */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
 .member-card {
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-left: 3px solid #667eea;
   background: var(--vp-c-divider);
   border-radius: 0 6px 6px 0;
@@ -242,20 +238,24 @@ const partners = reactive([
   background: #f0f0f0;
 }
 
+/* 响应式适配 */
+@media (max-width: 992px) {
+  .core-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .team-container {
     padding: 12px;
   }
-  
-  .members-wrapper {
-    grid-template-columns: 1fr;
-    gap: 16px;
+
+  .core-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
+  .partners-grid {
+    grid-template-columns: 1fr;
   }
   
   .teacher-card {
@@ -283,7 +283,7 @@ const partners = reactive([
   }
   
   .member-card {
-    padding: 8px;
+    padding: 8px 10px;
   }
   
   .member-name {
@@ -296,8 +296,8 @@ const partners = reactive([
 }
 
 @media (max-width: 480px) {
-  .members-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  .core-grid {
+    grid-template-columns: 1fr;
   }
   
   .teacher-info h3 {
