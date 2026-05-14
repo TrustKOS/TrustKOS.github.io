@@ -19,8 +19,8 @@ const achievements = [
     content: 'Presided over the 2025 Tianjin First Batch of New Form Teaching Materials Construction Project for General Universities: "Database Principles and Applications"'
   },
   {
-    type: 'teaching',
-    typeText: 'Vertical Projects',
+    type: 'research',
+    typeText: 'Horizontal Projects',
     authors: '',
     content: 'Presided over the 2024 Open Fund Project of Information Engineering Laboratory, Institute of Scientific and Technical Information of China: "Research on Deep Mining of Scientific and Technological Literature for Retrieval Enhancement of Large Language Models"'
   },
@@ -55,8 +55,8 @@ const achievements = [
     content: 'Presided over the 2021 Special Evaluation Research Project of National Science and Technology Evaluation Center: "Research on Talent Innovation Ability Evaluation Model Based on Static Information of Expert Database"'
   },
   {
-    type: 'teaching',
-    typeText: 'Vertical Projects',
+    type: 'research',
+    typeText: 'Horizontal Projects',
     authors: '',
     content: 'Presided over the 2020 Project of China National Committee for Terms in Sciences and Technologies: "Research on Integration Method of International Organization Term Bases"'
   },
