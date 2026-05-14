@@ -44,7 +44,16 @@
       <a-flex wrap="wrap" justify="space-around" gap="middle">
         <template v-for="(item, i) in info?.researchDirections" :key="i">
           <a-card hoverable style="width: 48%" :title="item.title">
-            {{item.content}}
+            <!-- 新增：图片区域 -->
+            <div class="research-img-wrapper">
+              <img 
+                :src="item.img" 
+                :alt="item.title" 
+                class="research-img"
+              />
+            </div>
+            <!-- 原有的内容文字 -->
+            <p class="research-content">{{item.content}}</p>
           </a-card>
         </template>
       </a-flex>
@@ -84,7 +93,6 @@ const props = defineProps({
   flex-shrink: 0;
   border-radius: 50%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  //background: #fff;
 }
 
 .profile-avatar {
@@ -146,6 +154,25 @@ const props = defineProps({
 
 .address {
   white-space: nowrap;
+}
+
+/* 新增：研究方向图片样式 */
+.research-img-wrapper {
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.research-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+.research-content {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
 }
 
 /* 适配移动端 */
