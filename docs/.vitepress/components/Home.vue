@@ -161,14 +161,18 @@ const props = defineProps({
   width: 100%;
   margin-bottom: 12px;
   border-radius: 6px;
-  overflow: hidden;
+  /* 取消隐藏裁切 */
+  overflow: visible;
+  text-align: center; /* 图片居中 */
 }
 .research-img {
+  /* 固定最大宽度，按比例自动缩放高度 */
+  max-width: 260px;
   width: 100%;
   height: auto;
-  display: block;
-  object-fit: cover;
-  max-height: 160px;
+  display: inline-block;
+  /* 关键：完整显示图片，不裁剪 */
+  object-fit: contain;
 }
 .research-content {
   margin: 0;
