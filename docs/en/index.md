@@ -17,6 +17,7 @@ const info = {
     email: "songpy@tjnu.edu.cn",
     address: "No. 393, Binshui West Avenue, Xiqing District, Tianjin"
   },
+  researchSummary: "Research Interests: Knowledge Organization & NLP, Talent Profiling & Technology Evaluation, Big Data & AI Applications",
   dynamic: "Integrating multidisciplinary perspectives such as library and information science, linguistics, cognitive science, and computational science, this research explores the basic theories of knowledge organization and knowledge discovery. It focuses on knowledge representation, semantic computing, and automatic construction methods of trustworthy knowledge graphs. Taking terminology as a breakthrough and supported by natural language processing technology, it gradually integrates large model technology to achieve multi-dimensional, scenario-based, intelligent, precise, and interpretable scientific and technological knowledge organization and information services.",
   researchDirections: [
     {
