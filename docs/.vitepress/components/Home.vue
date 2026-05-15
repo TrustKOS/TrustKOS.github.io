@@ -168,6 +168,7 @@ const props = defineProps({
   height: auto;
   display: block;
   object-fit: cover;
+  max-height: 160px;
 }
 .research-content {
   margin: 0;
