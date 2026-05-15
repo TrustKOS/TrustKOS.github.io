@@ -167,7 +167,7 @@ const props = defineProps({
 }
 .research-img {
   /* 固定最大宽度，按比例自动缩放高度 */
-  max-width: 260px;
+  max-width: 300px;
   width: 100%;
   height: auto;
   display: inline-block;
