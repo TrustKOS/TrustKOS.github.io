@@ -17,8 +17,9 @@
             <span class="office">{{info?.profile.title}}</span>
           </div>
 
+          <!-- 这里改为从 info 读取 -->
           <div class="title-row">
-            研究方向：知识组织与自然语言处理、人才画像与科技评价、科技大数据与AI应用
+            {{ info?.researchSummary }}
           </div>
 
           <div class="contact-info">
