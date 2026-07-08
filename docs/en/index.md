@@ -32,7 +32,7 @@ const info = {
     },
     {
       title: "Ancient Book Scientific Knowledge Discovery: Integration of Large-Scale Ancient Book Knowledge Base and Development of 'Ancient Tao' Knowledge Graph Service Platform",
-      content: "From the perspective of knowledge organization and open-source intelligence, methods such as natural language processing and deep learning are used to identify domain experts and teams. It accurately recognizes, evaluates, and recommends their research expertise, influence, activity, authority, growth, mobility, international cooperation, responsible review and avoidance relationships, research integrity, and ethical risks, providing decision support for government departments, science parks, and tech enterprises in talent recruitment, cultivation, utilization, and retention.",
+      content: "Based on ancient corpora, literature and terminological databases, this study leverages knowledge organization and NLP methods to extract scientific terms and professional knowledge from rare ancient books and build reliable knowledge graphs. It explores the structuring, systematic arrangement and intelligent exploitation of ancient texts to advance ancient book conservation and enable ancient scientific knowledge to serve modern society.",
       img: "/images/r3.png"
     },
     {
